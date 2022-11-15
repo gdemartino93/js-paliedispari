@@ -23,7 +23,7 @@ const parolaUtente = prompt('Enter a string: ');
 // prendi la parola di imput
 
 
-const value = palindromo(parolaUtente);
+const output = palindromo(parolaUtente);
 // richiama la funzione
 
-console.log(value);
+console.log(output);
