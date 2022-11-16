@@ -1,46 +1,59 @@
-let sceltaUser = prompt("Scegli se vuoi pari o dispari");
-// User dichiara se sceglie pari o dispari
+let sceltaUser = prompt("pari o dispari?");
+// Chiedo di scegliere pari o dispari e poi un numero da 1 a 5
 
-let numeroUser = parseInt(prompt("Inserisci un numero da 1 a 5"));
-// User inserisce numero da 1 a 5
 
-let numeroPc = generaNr()
-// Numero pc viene generato da una funzione "generanr"( che contiene un altra funziona "mathflor") quindi amen.....
-
-let somma = numeroUser + numeroPc;
-// fai la somma dei due numeri
-
-let parDispari= pariDispari(somma)
-// usa la funzione pariDispari che stabilisce se la variabile somma è pari o dispari
-
-console.log(`il numero dell'user è `+ numeroUser + ` il numero del pc è ` + numeroPc );
-console.log(` la somma dei numeri è ` + somma + `ed è ` + parDispari )
-console.log(`la scelta dell'user è `+ sceltaUser )
-// console log di debug delle varie scelte...rimangono di debug per un futuro lontano :D
-
-if ( parDispari === sceltaUser){   //se il valore pardispari è uguale alla scelta dell'user allora l'user ha vinto
-    alert("hai scelto " + sceltaUser + " hai vinto")
-}
-else{
-    alert("hai perso") // altrimenti ha perso
-}
-
-function generaNr(){   
-    const numeroGenerato=Math.floor((Math.random() * 5) + 1);
-    return numeroGenerato;
-}
-// funzione genera numeri attualmente inutile però amen.
-
-function pariDispari(nrDaInserire){
-    if ( nrDaInserire % 2 === 0){
-        risultato = "pari"
-        return risultato
-     
+if (sceltaUser == "pari" || sceltaUser == "dispari") {
+  let numeroUser = parseInt(prompt("Scegli un numero da 1 a 5!"));
+// Controlla se sa scrivere allora prenditi numero
+  if ((numeroUser > 5) || (numeroUser < 1)) {
+    do {
+      alert("Hai inserito un numero non valido!");
+      numeroUser = parseInt(prompt("Scegli un numero da 1 a 5!"));
     }
-    else{
-        risultato = "dispari"
-        return risultato
-    }
-}
-// funziona per stabile se numero è pari o dispari....utilissima :D XD lol
+    while ((numeroUser > 5) || (numeroUser < 1));
+  }
+  // Controllo se sono stati inseriti dei numeri nel rage richiesto
 
+
+  function generaNr() {
+    return parseInt(Math.floor(Math.random() * 5) +1);
+  }
+  let numeroComputer = generaNr(); // Registriamo in memoria il numero assegnandolo ad una variabile
+
+  somma = numeroUser + numeroComputer; // Sommiamo le due variabili con i numeri
+
+  console.log("Hai scelto " + sceltaUser);
+  console.log("Il tuo numero: " + numeroUser);
+  console.log("Il numero del computer: " + numeroComputer);
+  console.log("La somma è " + somma );
+  // Generiamo un numero random da 1 a 5 per il computer
+  // E inseriamolo in una funzione
+
+  function pariDispari() {
+    if (somma % 2 != 0) {
+      somma = "dispari";
+    }
+    else {
+      somma = "pari";
+    }
+    return somma;
+  }
+  // Controlliamo se la somma delle due variabili è un numero pari o un numero dispari
+
+  let pariDispariSomma = pariDispari(); // Richiamiamo la funzione e assegnamola ad una variabile per tenerla in memoria
+  console.log("è un numero" + pariDispariSomma);
+
+ 
+  if (sceltaUser == pariDispariSomma) {
+    alert("hai vinto")
+  }
+  else {
+    alert("hai perso")
+  }
+}
+else {
+  alert("Impara a scrivere coglione!");
+  location.reload();
+}
+
+ // Dichiariamo chi ha vinto
